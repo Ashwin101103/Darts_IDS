@@ -6,14 +6,14 @@ This repository contains the full experimental pipeline for **DARTS-IDS**, a Dif
 
 The notebook implements an end-to-end research pipeline:
 
-1. **Data loading & preprocessing** — loads NF-ToN-IoT-v2, encodes labels, scales features, and performs a stratified train/search/test split.
-2. **DARTS architecture search** — a supernet made of 4 mixed-operation cells (`linear_relu`, `bottleneck`, `residual`, `se_block`, `gated_linear`) is trained with bi-level optimization (weights vs. architecture parameters/alphas) to discover the best operation per cell.
-3. **Final model training** — the discovered architecture (`FinalDARTS`) is retrained from scratch on the combined train+search split and evaluated on the held-out test set.
-4. **Evaluation & visualization** — confusion matrix, ROC curves, precision-recall curves, and calibration curves for the final model.
-5. **Baseline comparison** — DARTS-IDS is benchmarked against an MLP (with/without class weights), XGBoost, LightGBM, Random Forest, and Logistic Regression, including a Gaussian-noise robustness sweep.
-6. **Class-aware quantization (CAQ)** — a greedy, class-aware search that restores selected FP32 modules on top of an INT8-quantized model to recover accuracy on hard classes while minimizing size.
-7. **ONNX static quantization** — exports the model to ONNX and searches over node-exclusion combinations to find the best accuracy/size trade-off for static INT8 quantization, targeting microcontroller-class deployment (e.g., ESP32).
-8. **Paper table generation** — produces the final CSV tables (main comparison, calibration ablation, incremental gains, compression/performance trade-off, summary) used in the paper.
+1. **Data loading & preprocessing** - loads NF-ToN-IoT-v2, encodes labels, scales features, and performs a stratified train/search/test split.
+2. **DARTS architecture search** - a supernet made of 4 mixed-operation cells (`linear_relu`, `bottleneck`, `residual`, `se_block`, `gated_linear`) is trained with bi-level optimization (weights vs. architecture parameters/alphas) to discover the best operation per cell.
+3. **Final model training** - the discovered architecture (`FinalDARTS`) is retrained from scratch on the combined train+search split and evaluated on the held-out test set.
+4. **Evaluation & visualization** - confusion matrix, ROC curves, precision-recall curves, and calibration curves for the final model.
+5. **Baseline comparison** - DARTS-IDS is benchmarked against an MLP (with/without class weights), XGBoost, LightGBM, Random Forest, and Logistic Regression, including a Gaussian-noise robustness sweep.
+6. **Class-aware quantization (CAQ)** - a greedy, class-aware search that restores selected FP32 modules on top of an INT8-quantized model to recover accuracy on hard classes while minimizing size.
+7. **ONNX static quantization** - exports the model to ONNX and searches over node-exclusion combinations to find the best accuracy/size trade-off for static INT8 quantization, targeting microcontroller-class deployment (e.g., ESP32).
+8. **Paper table generation** - produces the final CSV tables (main comparison, calibration ablation, incremental gains, compression/performance trade-off, summary) used in the paper.
 
 ## Repository Structure
 
